@@ -8,31 +8,31 @@ class AdminMyModCommentsController extends ModuleAdminController
 		$this->table = 'mymod_comment';
 		$this->className = 'MyModComment';
 		$this->fields_list = array(
-			'id_mymod_comment' => array('title' => $this->l('ID'), 'align' => 'center', 'width' => 25),
-			'shop_name' => array('title' => $this->l('Shop'), 'width' => 120, 'filter_key' => 's!name'),
-			'firstname' => array('title' => $this->l('Firstname'), 'width' => 120),
-			'lastname' => array('title' => $this->l('Lastname'), 'width' => 140),
-			'email' => array('title' => $this->l('E-mail'), 'width' => 150),
-			'product_name' => array('title' => $this->l('Product'), 'width' => 100, 'filter_key' => 'pl!name'),
-			'grade_display' => array('title' => $this->l('Grade'), 'align' => 'right', 'width' => 80, 'filter_key' => 'a!grade'),
-			'comment' => array('title' => $this->l('Comment'), 'search' => false),
-			'date_add' => array('title' => $this->l('Date add'), 'type' => 'date'),
+			'id_mymod_comment' => array('title' => Context::getContext()->getTranslator()->trans('ID'), 'align' => 'center', 'width' => 25),
+			'shop_name' => array('title' => Context::getContext()->getTranslator()->trans('Shop'), 'width' => 120, 'filter_key' => 's!name'),
+			'firstname' => array('title' => Context::getContext()->getTranslator()->trans('Firstname'), 'width' => 120),
+			'lastname' => array('title' => Context::getContext()->getTranslator()->trans('Lastname'), 'width' => 140),
+			'email' => array('title' => Context::getContext()->getTranslator()->trans('E-mail'), 'width' => 150),
+			'product_name' => array('title' => Context::getContext()->getTranslator()->trans('Product'), 'width' => 100, 'filter_key' => 'pl!name'),
+			'grade_display' => array('title' => Context::getContext()->getTranslator()->trans('Grade'), 'align' => 'right', 'width' => 80, 'filter_key' => 'a!grade'),
+			'comment' => array('title' => Context::getContext()->getTranslator()->trans('Comment'), 'search' => false),
+			'date_add' => array('title' => Context::getContext()->getTranslator()->trans('Date add'), 'type' => 'date'),
 		);
 
 		// Set fields form for form view
 		$this->context = Context::getContext();
 		$this->context->controller = $this;
 		$this->fields_form = array(
-			'legend' => array('title' => $this->l('Add / Edit Comment'), 'image' => '../img/admin/contact.gif'),
+			'legend' => array('title' => Context::getContext()->getTranslator()->trans('Add / Edit Comment'), 'image' => '../img/admin/contact.gif'),
 			'input' => array(
-				array('type' => 'text', 'label' => $this->l('Firstname'), 'name' => 'firstname', 'size' => 30, 'required' => true),
-				array('type' => 'text', 'label' => $this->l('Lastname'), 'name' => 'lastname', 'size' => 30, 'required' => true),
-				array('type' => 'text', 'label' => $this->l('E-mail'), 'name' => 'email', 'size' => 30, 'required' => true),
-				array('type' => 'select', 'label' => $this->l('Product'), 'name' => 'id_product', 'required' => true, 'default_value' => 1, 'options' => array('query' => Product::getProducts($this->context->cookie->id_lang, 1, 1000, 'name', 'ASC'), 'id' => 'id_product', 'name' => 'name')),
-				array('type' => 'text', 'label' => $this->l('Grade'), 'name' => 'grade', 'size' => 30, 'required' => true, 'desc' => $this->l('Grade must be between 1 and 5')),
-				array('type' => 'textarea', 'label' => $this->l('Comment'), 'name' => 'comment', 'cols' => 50, 'rows' => 5, 'required' => false),
+				array('type' => 'text', 'label' => Context::getContext()->getTranslator()->trans('Firstname'), 'name' => 'firstname', 'size' => 30, 'required' => true),
+				array('type' => 'text', 'label' => Context::getContext()->getTranslator()->trans('Lastname'), 'name' => 'lastname', 'size' => 30, 'required' => true),
+				array('type' => 'text', 'label' => Context::getContext()->getTranslator()->trans('E-mail'), 'name' => 'email', 'size' => 30, 'required' => true),
+				array('type' => 'select', 'label' => Context::getContext()->getTranslator()->trans('Product'), 'name' => 'id_product', 'required' => true, 'default_value' => 1, 'options' => array('query' => Product::getProducts($this->context->cookie->id_lang, 1, 1000, 'name', 'ASC'), 'id' => 'id_product', 'name' => 'name')),
+				array('type' => 'text', 'label' => Context::getContext()->getTranslator()->trans('Grade'), 'name' => 'grade', 'size' => 30, 'required' => true, 'desc' => Context::getContext()->getTranslator()->trans('Grade must be between 1 and 5')),
+				array('type' => 'textarea', 'label' => Context::getContext()->getTranslator()->trans('Comment'), 'name' => 'comment', 'cols' => 50, 'rows' => 5, 'required' => false),
 			),
-			'submit' => array('title' => $this->l('Save'))
+			'submit' => array('title' => Context::getContext()->getTranslator()->trans('Save'))
 		);
 
 		// Enable bootstrap
@@ -54,18 +54,18 @@ class AdminMyModCommentsController extends ModuleAdminController
 		// Add bulk actions
 		$this->bulk_actions = array(
 			'delete' => array(
-				'text' => $this->l('Delete selected'),
-				'confirm' => $this->l('Would you like to delete the selected items?'),
+				'text' => Context::getContext()->getTranslator()->trans('Delete selected'),
+				'confirm' => Context::getContext()->getTranslator()->trans('Would you like to delete the selected items?'),
 			),
 			'myaction' => array(
-				'text' => $this->l('My Action'), 'confirm' => $this->l('Are you sure?'),
+				'text' => Context::getContext()->getTranslator()->trans('My Action'), 'confirm' => Context::getContext()->getTranslator()->trans('Are you sure?'),
 			)
 		);
 
 		// Define meta and toolbar title
-		$this->meta_title = $this->l('Comments on Product');
+		$this->meta_title = Context::getContext()->getTranslator()->trans('Comments on Product');
 		if (Tools::getIsset('viewmymod_comment'))
-			$this->meta_title = $this->l('View comment').' #'. Tools::getValue('id_mymod_comment');
+			$this->meta_title = Context::getContext()->getTranslator()->trans('View comment').' #'. Tools::getValue('id_mymod_comment');
 		$this->toolbar_title[] = $this->meta_title;
 	}
 
@@ -91,9 +91,9 @@ class AdminMyModCommentsController extends ModuleAdminController
 		// Add delete shortcut button to toolbar
 		$this->page_header_toolbar_btn['delete'] = array(
 			'href' => $admin_delete_link,
-			'desc' => $this->l('Delete it'),
+			'desc' => Context::getContext()->getTranslator()->trans('Delete it'),
 			'icon' => 'process-icon-delete',
-			'js' => "return confirm('".$this->l('Are you sure you want to delete it ?')."');",
+			'js' => "return confirm('".Context::getContext()->getTranslator()->trans('Are you sure you want to delete it ?')."');",
 		);
 
 		$this->object->loadProductName();
